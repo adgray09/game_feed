@@ -4,9 +4,8 @@
 {% block content %}
 
 <!-- styling for title page -->
-    <h1 style="color: black;"align="center">Game Feed</h1>
-    <h2 style="color:black" align="center">Welcome to Game Feed! Where you can list your game creations for feedback!</h2>
-    <button><a href='/games/new'>Add your game!</a></button>
+    <h1 style="color: whitesmoke ;"align="center">Game Feed</h1>
+    <h2 style="color:whitesmoke" align="center">Welcome to Game Feed! Where you can list your game creations for feedback!</h2>
 
 
 
@@ -14,14 +13,14 @@
     {% if game_items %}
         <div class="row">
             {% for game in game_items %}
-                <div class='col-md-3'>
+                <div class='col-md-4'>
                     <div class="card text-center" style="width: 18rem;">
                         <div class="card-body">
-                            <div>
-                                <img src="{{ game.url }}" height="200" width="200"></img>
+                            <div class="mh-100">
+                                <img src="{{ game.url }}" class="mh-100" class="mw-200"></img>
+                                <h3 class="card-title"><a href='/game/{{ game._id }}' class="btn btn-primary">{{ game.title }}</a></h3>
+                                <h4 class="card-text">{{ game.description }}</h4>
                             </div>
-                            <h3 class="card-title"><a href='/game/{{ game._id }}' class="btn btn-primary">{{ game.title }}</a></h3>
-                            <h4 class="card-text">{{ game.description }}</h4>
                         </div>
                     </div>
                 </div>
