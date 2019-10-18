@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
 
-client = MongoClient()
-db = client.intense
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/gamefeed')
+client = MongoClient(host=host)
+db = client.get_default_database()
 games = db.games
 
 app = Flask(__name__, static_url_path='/static')
@@ -63,4 +65,4 @@ def games_update(game_id):
     return redirect(url_for('games_update', game_id=game_id))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
