@@ -3,14 +3,23 @@
 
 {% block content %}
     <h1 style="color: black;"align="center">Game Feed</h1>
-
     <h2 style="color:black" align="center">Welcome to Game Feed! Where you can list your game creations for feedback!</h2>
     <button><a href='/games/new'>Add your game!</a></button>
 
+
     {% if game_items %}
-        {% for game in game_items %}
-        <h3><a href='/game/{{ game._id }}'>{{ game.title }}</a></h3>
-            <small>{{ game.description }}</small>
-        {% endfor %}
+        <div class="row">
+            {% for game in game_items %}
+                <div class='col-md-3'>
+                    <div class="card text-center" style="width: 18rem;">
+                        <div class="card-body">
+                            <img src="{{ game.url }}"></img>
+                            <h3 class="card-title"><a href='/game/{{ game._id }}' class="btn btn-primary">{{ game.title }}</a></h3>
+                            <h4 class="card-body">{{ game.description }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 {% endblock %}

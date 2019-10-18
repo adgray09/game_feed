@@ -18,7 +18,7 @@ def games_index():
 
 @app.route('/game/<game_id>')
 def games_show(game_id):
-    """Show a single playlist."""
+    """Show a single game."""
     game = games.find_one({'_id': ObjectId(game_id)})
     return render_template('game_item.html', game=game)
 
@@ -29,7 +29,7 @@ def games_new():
 
 @app.route('/games', methods=['POST'])
 def games_submit():
-    """Submit a new playlist."""
+    """Submit a new game."""
     added_game = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
@@ -47,17 +47,16 @@ def games_edit(game_id):
 
 @app.route('/game/<game_id>/delete', methods=['POST'])
 def games_delete(game_id):
-    """Delete one playlist."""
+    """Delete one game."""
     games.delete_one({'_id': ObjectId(game_id)})
     return redirect(url_for('games_index'))
 
 @app.route('/game/<game_id>', methods=['POST'])
 def games_update(game_id):
-    """Submit an edited playlist."""
+    """Submit an edited game log."""
     updated_game = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        
     }
     games.update_one(
         {'_id': ObjectId(game_id)},
