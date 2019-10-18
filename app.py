@@ -3,6 +3,8 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
+#MONGO INFO
+
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/gamefeed')
 client = MongoClient(host=host)
 db = client.get_default_database()
@@ -24,7 +26,7 @@ def games_show(game_id):
 
 @app.route('/games/new')
 def games_new():
-    """Create a new chip."""
+    """Create a new game."""
     return render_template('games_new.html')
 
 @app.route('/games', methods=['POST'])
