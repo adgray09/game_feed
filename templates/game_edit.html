@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/game/{{game._id}}'>
+    <fieldset>
+        <legend>Edit game log</legend>
+        <!-- TITLE -->
+        <p>
+            <label for='title'>Title</label><br>
+            <input id='title' type='text' name='title' value='{{ title }}'/>
+        </p>
+
+        <!-- DESCRIPTION -->
+        <p>
+            <label for='description'>Description</label><br>
+            <input id='description' type='text' name='description' value='{{ description }}' />
+        </p>
+
+        <!-- PHOTO LINKS -->
+        <p>
+            <label for='url'>URL</label>
+            <input type='url' name='url' />
+        </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Game</button>
+    </p>
+</form>
+{% endblock %}

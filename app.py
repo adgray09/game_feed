@@ -37,6 +37,30 @@ def games_submit():
     games.insert_one(added_game)
     return redirect(url_for('games_index'))
 
+@app.route('/game/<game_id>/edit')
+def games_edit(game_id):
+    """Show the edit form for a game listing."""
+    game = games.find_one({'_id': ObjectId(game_id)})
+    return render_template('game_edit.html', game=game)
+
+@app.route('/game/<game_id>/delete', methods=['POST'])
+def games_delete(game_id):
+    """Delete one playlist."""
+    games.delete_one({'_id': ObjectId(game_id)})
+    return redirect(url_for('games_index'))
+
+@app.route('/game/<game_id>', methods=['POST'])
+def games_update(game_id):
+    """Submit an edited playlist."""
+    updated_game = {
+        'title': request.form.get('title'),
+        'description': request.form.get('description'),
+        
+    }
+    games.update_one(
+        {'_id': ObjectId(game_id)},
+        {'$set': updated_game})
+    return redirect(url_for('games_update', game_id=game_id))
 
 if __name__ == '__main__':
     app.run(debug=True)
