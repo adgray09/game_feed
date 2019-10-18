@@ -1,0 +1,31 @@
+<!-- templates/playlists_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/chips'>
+    <fieldset>
+    <legend>New Game Listing</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='title'>Name of your game</label><br>
+        <input type='text' name='title' />
+    </p>
+    <p>
+        <h3>please describe what your game is</h3>
+        <label for='description'>Description of game</label><br>
+        <input type='text' name='description' />
+    </p>
+    
+    <p> 
+        <h3>add a photo of your game!</h3>
+        <label for='url'>URL</label>
+        <input type='url' name='url' />
+    </p>
+    
+</fieldset>
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Game</button>
+    </p>
+</form>
+{% endblock %}
