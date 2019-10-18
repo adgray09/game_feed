@@ -1,13 +1,14 @@
+<!-- templates/playlists_index.html -->
 {% extends 'base.html' %}
 
 {% block content %}
     <h1 style="color: green;"align="center">Chip lister</h1>
 
     <h2 style="color: red" align="center">Welcome to Chip lister! Where you can list your favorite chips</h2>
-    <button><a href='/chips/new'>Add your favorite chips!</a></button>
+    <button><a href='/games/new'>Add your game!</a></button>
 
-    {% if game_item %}
-        {% for game in game_item %}
+    {% if game_items %}
+        {% for game in game_items %}
         <h3><a href='/game/{{ game._id }}'>{{ game.title }}</a></h3>
             <small>{{ game.description }}</small>
         {% endfor %}

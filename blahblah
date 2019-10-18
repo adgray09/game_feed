@@ -1,0 +1,19 @@
+<!-- templates/playlists_index.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Game Feed</h1>
+    {% for game in game %}
+        <h2>{{ game.title }}</h2>
+        <img style="width:600px; height:400px;"  src="/static/images/skyrim.png"/>
+        <h3>{{ game.description }}</h3>
+    {% endfor %}
+
+    {% for game in games %}
+        <h2>{{ game.title }}</h2>
+        <img style="width:600px; height:400px;"  src="/static/images/skyrim.png"/>
+        <h3>{{ game.description }}</h3>
+    {% endfor %}
+
+
+{% endblock %}
