@@ -16,3 +16,7 @@ img.center {
     margin-right: auto;
 }
 .col-md-4:nth-child(3n+3) + .col-md-4{clear:both;}
+
+white {
+    color: whitesmoke;
+}

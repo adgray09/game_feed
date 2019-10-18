@@ -65,5 +65,14 @@ def games_update(game_id):
         {'$set': updated_game})
     return redirect(url_for('games_update', game_id=game_id))
 
+@app.route('/create')
+def create_user():
+    return render_template('create_user.html')
+
+@app.route('/create/<account>', methods=['POST'])
+def add_user():
+    return redirect(url_for('games.index'))
+    
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
